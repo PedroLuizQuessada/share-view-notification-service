@@ -2,6 +2,7 @@ package com.example.shareviewnotificationservice.infrastructure.notification.jav
 
 import com.example.shareviewnotificationservice.datasources.NotificationDataSource;
 import dtos.NotificationDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,7 +21,7 @@ public class NotificationDataSourceJavaMailSenderImpl implements NotificationDat
     @Value("${email.recipient}")
     private String recipient;
 
-    public NotificationDataSourceJavaMailSenderImpl(JavaMailSender javaMailSender) {
+    public NotificationDataSourceJavaMailSenderImpl(@Autowired(required = false) JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
