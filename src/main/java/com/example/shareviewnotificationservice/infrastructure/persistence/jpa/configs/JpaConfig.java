@@ -61,7 +61,7 @@ public class JpaConfig {
     EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource());
-        entityManagerFactory.setPackagesToScan("com.example.shareviewnotificationservice");
+        entityManagerFactory.setPackagesToScan("models");
         entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter());
         entityManagerFactory.setJpaProperties(additionalProperties());
         entityManagerFactory.afterPropertiesSet();

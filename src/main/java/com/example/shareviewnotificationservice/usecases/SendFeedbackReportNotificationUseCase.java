@@ -48,7 +48,7 @@ public class SendFeedbackReportNotificationUseCase {
     }
 
     private String findMostEvaluatedCourse(List<FeedbackDto> feedbackDtoList) {
-        return feedbackDtoList.stream()
+        String mostEvaluatedCourse = feedbackDtoList.stream()
                 .map(f -> {
                     ClassDto c = (f != null ? f.clazz() : null);
                     CourseDto course = (c != null ? c.course() : null);
@@ -62,6 +62,10 @@ public class SendFeedbackReportNotificationUseCase {
                                 .map(Map.Entry::getKey)
                                 .orElse(null)
                 ));
+        if (mostEvaluatedCourse == null) {
+            mostEvaluatedCourse = "nenhum";
+        }
+        return mostEvaluatedCourse;
     }
 
     private double findAvarageRating(List<FeedbackDto> feedbackDtoList) {
